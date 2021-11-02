@@ -10,7 +10,7 @@ public class CacheLRU extends Cache{
     public void write(String key, String value) {
         if(this.getDataMap().containsKey(key)){
             this.getKeys().removeIf(entry -> entry.equals(key));
-            this.getKeys().add(0, key);
+            this.getKeys().addFirst(key);
             this.getDataMap().put(key, value);
         }
         else if(this.getKeys().size() < this.getSize()){
@@ -27,6 +27,8 @@ public class CacheLRU extends Cache{
 
     @Override
     public String read(String key) {
+        this.getKeys().removeIf(entry -> entry.equals(key));
+        this.getKeys().addFirst(key);
         return this.getDataMap().get(key);
     }
 
