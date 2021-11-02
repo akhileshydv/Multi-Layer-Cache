@@ -24,7 +24,7 @@ public class CacheFiFO extends Cache{
         else{
             this.getDataMap().remove(this.getKeys().getFirst());
             this.getKeys().removeFirst();
-            this.getKeys().add(key);
+            this.getKeys().addLast(key);
             this.getDataMap().put(key, value);
         }
     }
