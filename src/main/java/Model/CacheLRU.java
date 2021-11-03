@@ -18,7 +18,7 @@ public class CacheLRU extends Cache{
             this.getDataMap().put(key, value);
         }
         else{
-            this.getDataMap().remove(this.getKeys().removeLast());
+            this.getDataMap().remove(this.getKeys().getLast());
             this.getKeys().removeLast();
             this.getKeys().addFirst(key);
             this.getDataMap().put(key, value);
